@@ -51,11 +51,11 @@ class MigrationUpCommand extends AbstractCommand
         if ($this->hasInputOption('output-dir', $input)) {
             $configOptions['propel']['paths']['migrationDir'] = $input->getOption('output-dir');
         }
-        
+
         if ($this->hasInputOption('migration-table', $input)) {
             $configOptions['propel']['migrations']['tableName'] = $input->getOption('migration-table');
         }
-        
+
         $generatorConfig = $this->getGeneratorConfig($configOptions, $input);
 
         $this->createDirectory($generatorConfig->getSection('paths')['migrationDir']);
@@ -190,5 +190,7 @@ class MigrationUpCommand extends AbstractCommand
         } else {
             $output->writeln('Migration complete. No further migration to execute.');
         }
+
+        return 0;
     }
 }
